@@ -1,5 +1,5 @@
 {
-  "curationsSinceDream": 7,
+  "curationsSinceDream": 13,
   "lastDreamAt": "2026-05-07T09:35:46.528Z",
   "lastDreamLogId": "drm-1778146529021",
   "pendingMerges": [],
@@ -35,6 +35,22 @@
     {
       "enqueuedAt": 1778155129432,
       "path": "project_overview/phase_2_data_understanding/data_understanding_findings/phase_2_data_understanding_findings.md"
+    },
+    {
+      "enqueuedAt": 1778160523798,
+      "path": "engineering/training/amp_gradscaler_optimization.md"
+    },
+    {
+      "enqueuedAt": 1778160534036,
+      "path": "engineering/testing/pytest_slow_marker_registration.md"
+    },
+    {
+      "enqueuedAt": 1778160534036,
+      "path": "engineering/working_module/working_module_overview.md"
+    },
+    {
+      "enqueuedAt": 1778160542697,
+      "path": "engineering/architecture/foodnet_package_architecture.md"
     }
   ],
   "totalDreams": 1,

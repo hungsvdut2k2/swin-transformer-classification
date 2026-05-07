@@ -1,0 +1,1 @@
+The AMP GradScaler implementation is optimized for cross-platform portability by gating CUDA-dependent assertions with torch.cuda.is_available() to prevent execution errors in CPU-only environments.

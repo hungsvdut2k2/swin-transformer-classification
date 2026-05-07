@@ -1,1 +1,1 @@
-The implementation plan for the foodnet package outlines a layered architecture, four core CLIs, and TDD-based development goals for the Swin-Tiny classification pipeline.
+The implementation plan for phases 3 through 5 outlines a systematic workflow covering data preprocessing, baseline model training, and evaluation framework development for the Swin Transformer project.

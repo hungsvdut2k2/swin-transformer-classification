@@ -9,6 +9,7 @@ from typing import Sequence
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from tqdm.auto import tqdm
 from timm.loss import SoftTargetCrossEntropy
 from timm.utils import accuracy as _timm_acc  # noqa: F401  (kept for symmetry; we use our own loop)
 from foodnet.data.dataset import SplitsDataset
@@ -127,7 +128,7 @@ def run(args: argparse.Namespace) -> int:
         state = load_checkpoint(last_pt, model, optimizer, scaler, map_location=device)
         start_epoch = state["epoch"] + 1
         best_top1 = state["best_metric"]
-        print(f"[train] resumed from epoch {start_epoch} (best_top1={best_top1:.4f})")
+        tqdm.write(f"[train] resumed from epoch {start_epoch} (best_top1={best_top1:.4f})")
 
     stopper = EarlyStopper(patience=args.early_stop_patience, mode="max", min_delta=args.early_stop_min_delta) if args.early_stop else None
     logger = WandBLogger(enabled=args.wandb, project=args.wandb_project, run_name=args.run_name, config=vars(args))
@@ -138,24 +139,41 @@ def run(args: argparse.Namespace) -> int:
         writer = csv.writer(fh)
         if new_log:
             writer.writerow(["epoch", "train_loss", "val_loss", "val_top1", "val_top5", "elapsed_s"])
-        for epoch in range(start_epoch, args.epochs):
+        epoch_bar = tqdm(
+            range(start_epoch, args.epochs),
+            desc="epochs",
+            initial=start_epoch,
+            total=args.epochs,
+            dynamic_ncols=True,
+        )
+        for epoch in epoch_bar:
             t0 = time.time()
-            tr = train_one_epoch(model, train_dl, optimizer, train_criterion, scaler, device=device, grad_clip=args.grad_clip, mixup_fn=mixup_fn, amp=args.amp)
+            tr = train_one_epoch(
+                model, train_dl, optimizer, train_criterion, scaler,
+                device=device, grad_clip=args.grad_clip, mixup_fn=mixup_fn, amp=args.amp,
+                progress=True, desc=f"train ep {epoch}",
+            )
             scheduler.step(epoch + 1)
-            va = validate(model, val_dl, val_criterion, device=device, num_classes=args.num_classes, amp=args.amp)
+            va = validate(
+                model, val_dl, val_criterion,
+                device=device, num_classes=args.num_classes, amp=args.amp,
+                progress=True, desc=f"val ep {epoch}",
+            )
             elapsed = time.time() - t0
             writer.writerow([epoch, f"{tr['loss']:.6f}", f"{va['loss']:.6f}", f"{va['top1']:.6f}", f"{va['top5']:.6f}", f"{elapsed:.2f}"])
             fh.flush()
             logger.log({"train/loss": tr["loss"], "val/loss": va["loss"], "val/top1": va["top1"], "val/top5": va["top5"], "epoch": epoch}, step=epoch)
-            print(f"[train] epoch={epoch} train_loss={tr['loss']:.4f} val_top1={va['top1']:.4f} val_top5={va['top5']:.4f} ({elapsed:.1f}s)")
+            tqdm.write(f"[train] epoch={epoch} train_loss={tr['loss']:.4f} val_top1={va['top1']:.4f} val_top5={va['top5']:.4f} ({elapsed:.1f}s)")
+            epoch_bar.set_postfix(top1=f"{va['top1']:.4f}", best=f"{max(best_top1, va['top1']):.4f}")
 
             save_checkpoint(last_pt, model, optimizer, scaler, epoch=epoch, best_metric=best_top1)
             if va["top1"] > best_top1:
                 best_top1 = va["top1"]
                 save_checkpoint(out_dir / "best.pt", model, optimizer, scaler, epoch=epoch, best_metric=best_top1)
             if stopper is not None and stopper.step(va["top1"]):
-                print(f"[train] early stop at epoch {epoch} (best={stopper.best:.4f})")
+                tqdm.write(f"[train] early stop at epoch {epoch} (best={stopper.best:.4f})")
                 break
+        epoch_bar.close()
 
     logger.finish()
     print(f"[train] done. best val/top1 = {best_top1:.4f}")

@@ -1,0 +1,1 @@
+The Foodnet package utilizes a capability-based architecture where a thin CLI layer orchestrates modular components for data processing, model training, and evaluation to ensure a clean separation of concerns.

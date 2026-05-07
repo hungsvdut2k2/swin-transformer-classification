@@ -31,6 +31,38 @@
       "type": "summary"
     },
     {
+      "abstractPath": "engineering/architecture/foodnet_package_architecture.abstract.md",
+      "abstractTokens": 52,
+      "importance": 50,
+      "path": "engineering/architecture/foodnet_package_architecture.md",
+      "tokens": 52,
+      "type": "context"
+    },
+    {
+      "abstractPath": "engineering/testing/pytest_slow_marker_registration.abstract.md",
+      "abstractTokens": 43,
+      "importance": 50,
+      "path": "engineering/testing/pytest_slow_marker_registration.md",
+      "tokens": 43,
+      "type": "context"
+    },
+    {
+      "abstractPath": "engineering/training/amp_gradscaler_optimization.abstract.md",
+      "abstractTokens": 50,
+      "importance": 50,
+      "path": "engineering/training/amp_gradscaler_optimization.md",
+      "tokens": 50,
+      "type": "context"
+    },
+    {
+      "abstractPath": "engineering/working_module/working_module_overview.abstract.md",
+      "abstractTokens": 51,
+      "importance": 50,
+      "path": "engineering/working_module/working_module_overview.md",
+      "tokens": 51,
+      "type": "context"
+    },
+    {
       "abstractPath": "project_management/data_understanding/phase_2_data_understanding.abstract.md",
       "abstractTokens": 52,
       "importance": 50,
@@ -40,10 +72,10 @@
     },
     {
       "abstractPath": "project_management/data_understanding/phase_2_data_understanding_findings.abstract.md",
-      "abstractTokens": 53,
+      "abstractTokens": 50,
       "importance": 50,
       "path": "project_management/data_understanding/phase_2_data_understanding_findings.md",
-      "tokens": 53,
+      "tokens": 50,
       "type": "context"
     },
     {
@@ -69,9 +101,11 @@
       "type": "context"
     },
     {
+      "abstractPath": "project_overview/phase_2_data_understanding/data_understanding_findings/phase_2_data_understanding_findings.abstract.md",
+      "abstractTokens": 37,
       "importance": 50,
       "path": "project_overview/phase_2_data_understanding/data_understanding_findings/phase_2_data_understanding_findings.md",
-      "tokens": 269,
+      "tokens": 37,
       "type": "context"
     },
     {
@@ -83,9 +117,11 @@
       "type": "context"
     },
     {
+      "abstractPath": "project_overview/phases_3_5_implementation/phases_3_5_implementation_plan.abstract.md",
+      "abstractTokens": 51,
       "importance": 50,
       "path": "project_overview/phases_3_5_implementation/phases_3_5_implementation_plan.md",
-      "tokens": 245,
+      "tokens": 51,
       "type": "context"
     },
     {
@@ -111,13 +147,13 @@
       "type": "context"
     }
   ],
-  "generated_at": "2026-05-07T11:58:49.444Z",
+  "generated_at": "2026-05-07T13:29:33.004Z",
   "lane_tokens": {
-    "contexts": 929,
+    "contexts": 696,
     "stubs": 0,
     "summaries": 1415
   },
-  "source_fingerprint": "bf30cba0a36d4da30d968eb3c7ed24bdeaf81a4472eb79ac610670c2fd0aa48b",
-  "total_tokens": 2344,
+  "source_fingerprint": "d205a89a03f7ffc120cee418fc3e33d7262962374ff92aa934b6cde85568fcc4",
+  "total_tokens": 2111,
   "version": 1
 }

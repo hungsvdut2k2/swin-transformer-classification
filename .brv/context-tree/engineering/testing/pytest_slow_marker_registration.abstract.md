@@ -1,0 +1,1 @@
+Custom pytest markers like 'slow' must be registered in the pyproject.toml file under [tool.pytest.ini_options] to prevent PytestUnknownMarkWarning during test execution.

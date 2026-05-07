@@ -1,0 +1,1 @@
+The working module centralizes project phases, featuring a robust SplitsDataset that handles corrupt images through resampling and a run_inference function that ensures data alignment for parquet output.

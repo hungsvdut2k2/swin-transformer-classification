@@ -1,0 +1,5 @@
+- Custom pytest markers, specifically 'slow', must be registered to prevent PytestUnknownMarkWarning.
+- Registration is performed within the pyproject.toml file under the [tool.pytest.ini_options] section.
+- This practice is established as a project convention to maintain clean test execution logs.
+- Structure: Includes the rationale, implementation details (file location), and a formal rule for future marker additions.
+- Entities: pyproject.toml, pytest_marker (Convention).

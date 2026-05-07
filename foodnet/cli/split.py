@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 from typing import Sequence
 import pandas as pd
+from tqdm.auto import tqdm
 from foodnet.splitting.stratified import stratified_split
 
 
@@ -28,7 +29,7 @@ def _scan(images_root: Path) -> tuple[pd.DataFrame, list[str]]:
         raise SystemExit(f"No class subdirectories found under {images_root}.")
     cls_to_idx = {c: i for i, c in enumerate(classes)}
     rows: list[dict] = []
-    for c in classes:
+    for c in tqdm(classes, desc="scan", leave=False, dynamic_ncols=True):
         for f in sorted((images_root / c).iterdir()):
             if f.suffix.lower() in IMG_EXT and f.is_file():
                 rows.append({"filepath": f"{c}/{f.name}", "label": cls_to_idx[c], "class_name": c})
@@ -48,7 +49,7 @@ def run(args: argparse.Namespace) -> int:
     if len(ratios) != 3:
         raise SystemExit(f"--ratios must be 3 comma-separated floats, got {args.ratios!r}")
     df, classes = _scan(args.images_root)
-    train, val, test = stratified_split(df, ratios=ratios, seed=args.seed)
+    train, val, test = stratified_split(df, ratios=ratios, seed=args.seed, progress=True)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     for name, frame in [("train", train), ("val", val), ("test", test)]:
         frame.to_csv(args.output_dir / f"{name}.csv", index=False)

@@ -1,16 +1,17 @@
-- The Food-101 dataset is structured for a phased lifecycle, currently focusing on data understanding, metadata mapping, and statistical analysis.
-- Data splits are strictly defined at an 8:1:1 stratified ratio (800/100/100 per class) using a fixed seed of 42.
-- The project utilizes the `foodnet` package for the end-to-end pipeline, covering training, evaluation, and data management.
-- Performance requirements include a baseline top-1 accuracy target of >= 80% and a training time limit of under 6 hours on a Kaggle P100 GPU.
-- Training configurations incorporate advanced augmentation strategies, including RandAugment, Random Erasing, and Mixup/Label Smoothing.
+- Conducted comprehensive Exploratory Data Analysis (EDA) on the Food-101 dataset.
+- Generated key statistical artifacts including class distribution, image dimensions, and pixel value distributions.
+- Established a structured data understanding workflow: EDA -> Statistics -> Visualization -> Summary.
+- Documented findings in artifacts/phase2/eda_stats.json and generated visual reports (class_dist.png, dims_hist.png, pixel_stats.png).
+- Adhered to the project's phased lifecycle methodology (Data Understanding -> Preprocessing -> Baseline -> Evaluation).
 
 Structure / Sections Summary:
-- Reason: Defines the objective of documenting Phase 2 findings.
-- Raw Concept: Outlines the task, changes, file paths, and workflow.
-- Narrative: Describes the data structure, highlights, and lifecycle rules.
-- Facts: Provides technical specifications for environments, splitting, transforms, model architecture, optimization, and evaluation metrics.
+- Reason: Context for Phase 2 data understanding.
+- Raw Concept: Overview of tasks, changes, file paths, and workflow.
+- Narrative: Summary of the exploration process, highlights, and lifecycle rules.
+- Facts: Key metadata including dataset name and primary artifact locations.
 
-Notable Entities, Patterns, and Decisions:
-- Entities: Food-101 dataset, `foodnet` package, `swin_tiny_patch4_window7_224` model, Kaggle P100.
-- Patterns: Phased development lifecycle (Understanding -> Preprocessing -> Baseline -> Evaluation).
-- Decisions: Use of AdamW optimizer with 0.05 weight decay; early stopping patience set to 8 epochs; evaluation includes ECE (15-bin) and per-class accuracy.
+Notable Entities, Patterns, or Decisions:
+- Dataset: Food-101.
+- Workflow Pattern: Phased lifecycle approach.
+- Artifacts: eda_stats.json, class_dist.png, dims_hist.png, pixel_stats.png.
+- Notebook: notebooks/phase2_data_understanding.ipynb.

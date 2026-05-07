@@ -3,12 +3,14 @@ from __future__ import annotations
 import math
 import numpy as np
 import pandas as pd
+from tqdm.auto import tqdm
 
 
 def stratified_split(
     df: pd.DataFrame,
     ratios: tuple[float, float, float] = (0.8, 0.1, 0.1),
     seed: int = 42,
+    progress: bool = False,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Split df into (train, val, test) by per-class shuffle-and-slice.
 
@@ -20,6 +22,7 @@ def stratified_split(
         df: Frame with columns including ``label``.
         ratios: (train, val, test). Must sum to 1.0 within 1e-6.
         seed: Master seed; per-class seed is ``seed + label``.
+        progress: If True, display a per-class tqdm bar.
 
     Returns:
         (train_df, val_df, test_df), reset_index applied.
@@ -28,7 +31,11 @@ def stratified_split(
         raise ValueError(f"ratios must sum to 1.0, got {sum(ratios)} from {ratios}")
     r_train, r_val, _ = ratios
     train_parts, val_parts, test_parts = [], [], []
-    for label, group in df.groupby("label", sort=True):
+    groups = df.groupby("label", sort=True)
+    iterator = groups
+    if progress:
+        iterator = tqdm(groups, desc="stratified-split", total=groups.ngroups, leave=False, dynamic_ncols=True)
+    for label, group in iterator:
         items = group.sample(frac=1.0, random_state=seed + int(label)).reset_index(drop=True)
         n = len(items)
         n_train = int(math.floor(n * r_train))

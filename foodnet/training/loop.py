@@ -4,6 +4,7 @@ import math
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
+from tqdm.auto import tqdm
 
 
 @torch.no_grad()
@@ -23,11 +24,18 @@ def train_one_epoch(
     grad_clip: float = 1.0,
     mixup_fn=None,
     amp: bool = True,
+    progress: bool = False,
+    desc: str | None = None,
 ) -> dict:
     model.train()
     loss_sum, n = 0.0, 0
     steps = 0
-    for x, y in loader:
+    iterator = loader
+    pbar = None
+    if progress:
+        pbar = tqdm(loader, desc=desc or "train", leave=False, dynamic_ncols=True)
+        iterator = pbar
+    for x, y in iterator:
         x = x.to(device, non_blocking=True)
         y = y.to(device, non_blocking=True)
         if mixup_fn is not None:
@@ -47,6 +55,10 @@ def train_one_epoch(
         loss_sum += float(loss.item()) * x.size(0)
         n += x.size(0)
         steps += 1
+        if pbar is not None:
+            pbar.set_postfix(loss=f"{loss_sum / max(n, 1):.4f}", refresh=False)
+    if pbar is not None:
+        pbar.close()
     return {"loss": loss_sum / max(n, 1), "steps": steps}
 
 
@@ -58,11 +70,18 @@ def validate(
     device: str,
     num_classes: int,
     amp: bool = True,
+    progress: bool = False,
+    desc: str | None = None,
 ) -> dict:
     model.eval()
     loss_sum, n = 0.0, 0
     top1, top5 = 0, 0
-    for x, y in loader:
+    iterator = loader
+    pbar = None
+    if progress:
+        pbar = tqdm(loader, desc=desc or "val", leave=False, dynamic_ncols=True)
+        iterator = pbar
+    for x, y in iterator:
         x = x.to(device, non_blocking=True)
         y = y.to(device, non_blocking=True)
         with torch.cuda.amp.autocast(enabled=amp):
@@ -72,6 +91,10 @@ def validate(
         n += x.size(0)
         top1 += _topk_correct(logits, y, 1)
         top5 += _topk_correct(logits, y, 5)
+        if pbar is not None:
+            pbar.set_postfix(top1=f"{top1 / max(n, 1):.4f}", refresh=False)
+    if pbar is not None:
+        pbar.close()
     return {
         "loss": loss_sum / max(n, 1),
         "top1": top1 / max(n, 1),
