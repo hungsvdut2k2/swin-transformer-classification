@@ -1,1 +1,1 @@
-Phase 2 utilizes a single Jupyter notebook to perform comprehensive data understanding, including automated audits for data quality and statistical analysis for the Food-101 dataset.
+Phase 2 of the project focuses on analyzing the Food-101 dataset through cache generation, statistical evaluation, and the creation of visualizations for class distribution and image properties.
