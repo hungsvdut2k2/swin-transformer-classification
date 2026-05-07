@@ -23,8 +23,8 @@ def test_build_scheduler_cosine_with_warmup():
 def test_build_scaler_returns_gradscaler():
     s = build_scaler(enabled=True)
     assert isinstance(s, torch.cuda.amp.GradScaler)
-    # On CPU-only environments, GradScaler auto-disables itself.
-    # The key is that enabled=True creates an instance that *would* be enabled on CUDA.
+    if torch.cuda.is_available():
+        assert s.is_enabled() is True
 
     s2 = build_scaler(enabled=False)
     assert s2.is_enabled() is False
