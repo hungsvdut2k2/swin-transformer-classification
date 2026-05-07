@@ -218,7 +218,8 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Phase 2 artifacts
-data/food-101/
+data/*
+!data/.gitkeep
 artifacts/
 figures/
 !**/.gitkeep
