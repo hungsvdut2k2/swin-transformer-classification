@@ -8,7 +8,7 @@ def test_early_stop_max_mode_improves_resets_counter():
     assert not es.step(0.60)
     assert not es.step(0.55)  # 1
     assert not es.step(0.59)  # 2
-    assert not es.step(0.6005)  # tiny improvement < min_delta -> 3 -> stop
+    assert es.step(0.6005)  # tiny improvement < min_delta -> 3 -> stop
     assert es.should_stop
 
 
@@ -25,5 +25,5 @@ def test_early_stop_min_mode():
     es = EarlyStopper(patience=2, mode="min", min_delta=1e-3)
     assert not es.step(1.0)
     assert not es.step(0.5)  # better
-    assert not es.step(0.49)  # 1 (improvement < min_delta)
+    assert not es.step(0.4995)  # 1 (improvement < min_delta)
     assert es.step(0.50)  # 2 -> stop
