@@ -32,5 +32,8 @@ foodnet-train = "foodnet.cli.train:main"
 foodnet-evaluate = "foodnet.cli.evaluate:main"
 foodnet-analyze = "foodnet.cli.analyze:main"
 
+[tool.pytest.ini_options]
+markers = ["slow: marks tests as slow"]
+
 [tool.setuptools.packages.find]
 include = ["foodnet*"]
