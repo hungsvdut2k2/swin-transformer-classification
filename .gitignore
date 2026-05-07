@@ -223,3 +223,7 @@ data/*
 artifacts/
 figures/
 !**/.gitkeep
+
+# Phase 3+ artifacts
+runs/
+wandb/
