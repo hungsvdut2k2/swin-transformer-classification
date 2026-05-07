@@ -1,5 +1,5 @@
 {
-  "curationsSinceDream": 3,
+  "curationsSinceDream": 7,
   "lastDreamAt": "2026-05-07T09:35:46.528Z",
   "lastDreamLogId": "drm-1778146529021",
   "pendingMerges": [],
@@ -19,6 +19,22 @@
     {
       "enqueuedAt": 1778147978457,
       "path": "project_overview/swin_transformer_classification/project_overview.md"
+    },
+    {
+      "enqueuedAt": 1778153814573,
+      "path": "project_management/data_understanding/phase_2_data_understanding_findings.md"
+    },
+    {
+      "enqueuedAt": 1778153835876,
+      "path": "project_management/data_understanding/phase_2_data_understanding_summary.md"
+    },
+    {
+      "enqueuedAt": 1778155129432,
+      "path": "project_overview/phases_3_5_implementation/phases_3_5_implementation_plan.md"
+    },
+    {
+      "enqueuedAt": 1778155129432,
+      "path": "project_overview/phase_2_data_understanding/data_understanding_findings/phase_2_data_understanding_findings.md"
     }
   ],
   "totalDreams": 1,

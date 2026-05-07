@@ -39,6 +39,22 @@
       "type": "context"
     },
     {
+      "abstractPath": "project_management/data_understanding/phase_2_data_understanding_findings.abstract.md",
+      "abstractTokens": 53,
+      "importance": 50,
+      "path": "project_management/data_understanding/phase_2_data_understanding_findings.md",
+      "tokens": 53,
+      "type": "context"
+    },
+    {
+      "abstractPath": "project_management/data_understanding/phase_2_data_understanding_summary.abstract.md",
+      "abstractTokens": 48,
+      "importance": 50,
+      "path": "project_management/data_understanding/phase_2_data_understanding_summary.md",
+      "tokens": 48,
+      "type": "context"
+    },
+    {
       "abstractPath": "project_management/data_understanding/phase_2_decision_note.abstract.md",
       "abstractTokens": 61,
       "importance": 50,
@@ -53,11 +69,23 @@
       "type": "context"
     },
     {
+      "importance": 50,
+      "path": "project_overview/phase_2_data_understanding/data_understanding_findings/phase_2_data_understanding_findings.md",
+      "tokens": 269,
+      "type": "context"
+    },
+    {
       "abstractPath": "project_overview/phase_2_data_understanding/phase_2_data_understanding.abstract.md",
       "abstractTokens": 49,
       "importance": 50,
       "path": "project_overview/phase_2_data_understanding/phase_2_data_understanding.md",
       "tokens": 49,
+      "type": "context"
+    },
+    {
+      "importance": 50,
+      "path": "project_overview/phases_3_5_implementation/phases_3_5_implementation_plan.md",
+      "tokens": 245,
       "type": "context"
     },
     {
@@ -76,20 +104,20 @@
     },
     {
       "abstractPath": "project_overview/swin_transformer_classification/project_overview.abstract.md",
-      "abstractTokens": 35,
+      "abstractTokens": 48,
       "importance": 50,
       "path": "project_overview/swin_transformer_classification/project_overview.md",
-      "tokens": 35,
+      "tokens": 48,
       "type": "context"
     }
   ],
-  "generated_at": "2026-05-07T09:59:38.465Z",
+  "generated_at": "2026-05-07T11:58:49.444Z",
   "lane_tokens": {
-    "contexts": 301,
+    "contexts": 929,
     "stubs": 0,
     "summaries": 1415
   },
-  "source_fingerprint": "f393f2540e5fdb72565f9082a747aa37ae9568947c4ce2666f2ff88a91454513",
-  "total_tokens": 1716,
+  "source_fingerprint": "bf30cba0a36d4da30d968eb3c7ed24bdeaf81a4472eb79ac610670c2fd0aa48b",
+  "total_tokens": 2344,
   "version": 1
 }

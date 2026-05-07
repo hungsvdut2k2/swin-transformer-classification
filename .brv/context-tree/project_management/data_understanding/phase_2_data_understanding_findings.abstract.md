@@ -1,0 +1,1 @@
+This document outlines the Phase 2 data understanding findings for the Food-101 dataset, establishing the project's structural, environmental, and technical specifications for training a Swin-Tiny baseline model.

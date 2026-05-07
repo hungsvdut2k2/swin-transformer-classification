@@ -1,0 +1,1 @@
+The implementation plan for the foodnet package outlines a layered architecture, four core CLIs, and TDD-based development goals for the Swin-Tiny classification pipeline.

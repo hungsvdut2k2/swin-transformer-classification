@@ -1,0 +1,1 @@
+Phase 2 of the Food-101 classification project establishes data understanding through defined train, test, and validation splits alongside audit, dimension, and perceptual hash cache artifacts.

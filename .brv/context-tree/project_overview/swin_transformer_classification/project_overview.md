@@ -1,18 +1,21 @@
 ---
 title: Project Overview
-summary: Overview of the Swin Transformer classification project, including data structure, phase 2 status, and key project components.
+summary: Swin Transformer classification project structure, dataset, and phase-based development lifecycle
 tags: []
 related: [project_overview/project_details/project_details.md, project_overview/phase_2_data_understanding/phase_2_data_understanding.md]
 keywords: []
 createdAt: '2026-05-07T09:20:21.924Z'
-updatedAt: '2026-05-07T09:59:36.539Z'
+updatedAt: '2026-05-07T11:36:26.201Z'
 ---
 ## Reason
-Curate project overview and scope from provided context
+Curate project overview and scope from RLM context
 
 ## Raw Concept
 **Task:**
-Project Overview: Swin Transformer Classification
+Document Swin Transformer classification project
+
+**Changes:**
+- Initial project documentation
 
 **Files:**
 - docs/
@@ -22,16 +25,31 @@ Project Overview: Swin Transformer Classification
 - splits/train.csv
 - splits/test.csv
 - splits/val.csv
+- requirements.txt
+
+**Flow:**
+Phase 2 (Data Understanding) -> Phase 3 (Preprocessing) -> Phase 4 (Baseline Model) -> Phase 5 (Evaluation)
 
 **Timestamp:** 2026-05-07
 
 ## Narrative
 ### Structure
-Project manages food-101 dataset classification using Swin Transformer architecture.
+Project organized into phases with notebooks in notebooks/ and results in artifacts/.
 
 ### Highlights
-Phase 2 data understanding completed, including EDA stats, phash cache, and class distributions.
+Swin Transformer model for Food-101 classification.
+
+### Rules
+Follow phased development lifecycle.
 
 ## Facts
-- **dataset**: Project uses Food-101 dataset [project]
-- **phase_2_status**: Phase 2 data understanding focuses on EDA and preprocessing [project]
+- **foodnet package**: The foodnet package is a single pip-installable library with capability-layered modules.
+- **CLI**: The project uses four CLI entry points: split, train, evaluate, and analyze.
+- **Reproducibility**: Reproducibility is enforced via a fixed seed of 42 and tracking splits_meta sha256s in checkpoints.
+- **Evaluation**: The evaluation process is split into two stages: inference to generate predictions.parquet, followed by analysis.
+- **Early Stopping**: Early stopping is configured with patience=8 and min_delta=1e-3.
+- **Training**: The training process utilizes AdamW, CosineLRScheduler, and AMP GradScaler.
+- **Data Splitting**: The dataset splitting strategy uses per-class shuffle-and-slice with an 8:1:1 ratio.
+- **Clobber-prevention**: The training CLI prevents overwriting existing run_ids unless the --resume flag is used.
+- **Model**: The model architecture uses timm Swin-Tiny with LLRD decay of 0.75.
+- **Environment**: The system supports both Kaggle and local environments using the same code path via --images-root and --output-dir.

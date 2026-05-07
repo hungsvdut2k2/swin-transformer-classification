@@ -1,1 +1,1 @@
-This project implements Swin Transformer-based classification on the Food-101 dataset, currently focusing on phase two data understanding and exploratory analysis.
+This project implements a phased development lifecycle for Food-101 classification using a Swin-Tiny Transformer, emphasizing reproducibility, modular CLI tools, and standardized data handling.
