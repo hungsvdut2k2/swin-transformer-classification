@@ -24,18 +24,11 @@ def train_one_epoch(
     grad_clip: float = 1.0,
     mixup_fn=None,
     amp: bool = True,
-    progress: bool = False,
-    desc: str | None = None,
 ) -> dict:
     model.train()
     loss_sum, n = 0.0, 0
     steps = 0
-    iterator = loader
-    pbar = None
-    if progress:
-        pbar = tqdm(loader, desc=desc or "train", leave=False, dynamic_ncols=True)
-        iterator = pbar
-    for x, y in iterator:
+    for x, y in loader:
         x = x.to(device, non_blocking=True)
         y = y.to(device, non_blocking=True)
         if mixup_fn is not None:
@@ -55,10 +48,6 @@ def train_one_epoch(
         loss_sum += float(loss.item()) * x.size(0)
         n += x.size(0)
         steps += 1
-        if pbar is not None:
-            pbar.set_postfix(loss=f"{loss_sum / max(n, 1):.4f}", refresh=False)
-    if pbar is not None:
-        pbar.close()
     return {"loss": loss_sum / max(n, 1), "steps": steps}
 
 

@@ -151,7 +151,6 @@ def run(args: argparse.Namespace) -> int:
             tr = train_one_epoch(
                 model, train_dl, optimizer, train_criterion, scaler,
                 device=device, grad_clip=args.grad_clip, mixup_fn=mixup_fn, amp=args.amp,
-                progress=True, desc=f"train ep {epoch}",
             )
             scheduler.step(epoch + 1)
             va = validate(
@@ -162,9 +161,25 @@ def run(args: argparse.Namespace) -> int:
             elapsed = time.time() - t0
             writer.writerow([epoch, f"{tr['loss']:.6f}", f"{va['loss']:.6f}", f"{va['top1']:.6f}", f"{va['top5']:.6f}", f"{elapsed:.2f}"])
             fh.flush()
-            logger.log({"train/loss": tr["loss"], "val/loss": va["loss"], "val/top1": va["top1"], "val/top5": va["top5"], "epoch": epoch}, step=epoch)
-            tqdm.write(f"[train] epoch={epoch} train_loss={tr['loss']:.4f} val_top1={va['top1']:.4f} val_top5={va['top5']:.4f} ({elapsed:.1f}s)")
-            epoch_bar.set_postfix(top1=f"{va['top1']:.4f}", best=f"{max(best_top1, va['top1']):.4f}")
+            current_lr = optimizer.param_groups[0]["lr"]
+            running_best = max(best_top1, va["top1"])
+            logger.log(
+                {
+                    "train/loss": tr["loss"],
+                    "train/steps": tr["steps"],
+                    "val/loss": va["loss"],
+                    "val/top1": va["top1"],
+                    "val/top5": va["top5"],
+                    "val/n": va["n"],
+                    "best/top1": running_best,
+                    "lr": current_lr,
+                    "epoch_time_s": elapsed,
+                    "epoch": epoch,
+                },
+                step=epoch,
+            )
+            tqdm.write(f"[train] epoch={epoch} train_loss={tr['loss']:.4f} val_top1={va['top1']:.4f} val_top5={va['top5']:.4f} lr={current_lr:.2e} ({elapsed:.1f}s)")
+            epoch_bar.set_postfix(top1=f"{va['top1']:.4f}", best=f"{running_best:.4f}")
 
             save_checkpoint(last_pt, model, optimizer, scaler, epoch=epoch, best_metric=best_top1)
             if va["top1"] > best_top1:
