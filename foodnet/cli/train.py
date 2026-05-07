@@ -24,7 +24,7 @@ from foodnet.training.early_stop import EarlyStopper
 from foodnet.utils.seed import set_seed
 from foodnet.utils.paths import ensure_dir
 from foodnet.utils.wandb_logger import WandBLogger
-from foodnet.utils.config_dump import dump_args
+from foodnet.utils.config_dump import dump_args, serialize_args
 
 
 def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
@@ -131,7 +131,7 @@ def run(args: argparse.Namespace) -> int:
         tqdm.write(f"[train] resumed from epoch {start_epoch} (best_top1={best_top1:.4f})")
 
     stopper = EarlyStopper(patience=args.early_stop_patience, mode="max", min_delta=args.early_stop_min_delta) if args.early_stop else None
-    logger = WandBLogger(enabled=args.wandb, project=args.wandb_project, run_name=args.run_name, config=vars(args))
+    logger = WandBLogger(enabled=args.wandb, project=args.wandb_project, run_name=args.run_name, config=serialize_args(args))
     log_csv = out_dir / "train_log.csv"
     new_log = not log_csv.exists()
 
