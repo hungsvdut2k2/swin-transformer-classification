@@ -1,15 +1,63 @@
 {
   "active_context": [
     {
+      "order": 3,
+      "path": "_index.md",
+      "tokens": 351,
+      "type": "summary"
+    },
+    {
+      "order": 2,
+      "path": "project_overview/_index.md",
+      "tokens": 416,
+      "type": "summary"
+    },
+    {
+      "order": 1,
+      "path": "project_overview/phase_2_data_understanding/_index.md",
+      "tokens": 276,
+      "type": "summary"
+    },
+    {
+      "order": 1,
+      "path": "project_overview/project_details/_index.md",
+      "tokens": 173,
+      "type": "summary"
+    },
+    {
+      "order": 1,
+      "path": "project_overview/swin_transformer_classification/_index.md",
+      "tokens": 199,
+      "type": "summary"
+    },
+    {
+      "abstractPath": "project_management/data_understanding/phase_2_data_understanding.abstract.md",
+      "abstractTokens": 52,
+      "importance": 50,
+      "path": "project_management/data_understanding/phase_2_data_understanding.md",
+      "tokens": 52,
+      "type": "context"
+    },
+    {
+      "abstractPath": "project_management/data_understanding/phase_2_decision_note.abstract.md",
+      "abstractTokens": 61,
+      "importance": 50,
+      "path": "project_management/data_understanding/phase_2_decision_note.md",
+      "tokens": 61,
+      "type": "context"
+    },
+    {
       "importance": 50,
       "path": "project_overview/context.md",
       "tokens": 39,
       "type": "context"
     },
     {
+      "abstractPath": "project_overview/phase_2_data_understanding/phase_2_data_understanding.abstract.md",
+      "abstractTokens": 49,
       "importance": 50,
       "path": "project_overview/phase_2_data_understanding/phase_2_data_understanding.md",
-      "tokens": 325,
+      "tokens": 49,
       "type": "context"
     },
     {
@@ -27,19 +75,21 @@
       "type": "context"
     },
     {
+      "abstractPath": "project_overview/swin_transformer_classification/project_overview.abstract.md",
+      "abstractTokens": 35,
       "importance": 50,
       "path": "project_overview/swin_transformer_classification/project_overview.md",
-      "tokens": 245,
+      "tokens": 35,
       "type": "context"
     }
   ],
-  "generated_at": "2026-05-07T09:20:26.796Z",
+  "generated_at": "2026-05-07T09:59:38.465Z",
   "lane_tokens": {
-    "contexts": 674,
+    "contexts": 301,
     "stubs": 0,
-    "summaries": 0
+    "summaries": 1415
   },
-  "source_fingerprint": "5a5bef65fafa3b7d8aa6bd5b588adea96b31e5d974a7f4740ae32e3f9845195e",
-  "total_tokens": 674,
+  "source_fingerprint": "f393f2540e5fdb72565f9082a747aa37ae9568947c4ce2666f2ff88a91454513",
+  "total_tokens": 1716,
   "version": 1
 }

@@ -2,7 +2,7 @@
 title: Project Details
 summary: Project details including architecture, specifications, and project plan.
 tags: []
-related: []
+related: [project_overview/swin_transformer_classification/project_overview.md]
 keywords: []
 createdAt: '2026-05-07T09:11:13.397Z'
 updatedAt: '2026-05-07T09:11:13.397Z'

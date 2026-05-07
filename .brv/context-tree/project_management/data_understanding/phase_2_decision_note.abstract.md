@@ -1,0 +1,1 @@
+The Phase 2 decision note establishes reproducibility standards for the Food-101 project, including a fixed random seed of 42, a strict policy to preserve the test set until Phase 7, and a requirement to generate artifacts for downstream phases.

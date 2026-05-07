@@ -1,1 +1,1 @@
-This project implements image classification using the Swin Transformer architecture with structured documentation and context management.
+This project implements Swin Transformer-based classification on the Food-101 dataset, currently focusing on phase two data understanding and exploratory analysis.

@@ -1,0 +1,1 @@
+Phase 2 of the Food-101 project involves performing exploratory data analysis to characterize dataset structure, class distribution, and pixel statistics through dedicated notebooks and generated artifacts.
