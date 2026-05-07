@@ -1,0 +1,1 @@
+This document outlines the architectural specifications, project structure, and strategic planning for the Swin Transformer classification project.

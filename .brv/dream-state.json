@@ -1,0 +1,30 @@
+{
+  "curationsSinceDream": 2,
+  "lastDreamAt": null,
+  "lastDreamLogId": null,
+  "pendingMerges": [],
+  "staleSummaryPaths": [
+    {
+      "enqueuedAt": 1778145075651,
+      "path": "project_overview/context.md"
+    },
+    {
+      "enqueuedAt": 1778145075651,
+      "path": "project_overview/project_details/project_details.md"
+    },
+    {
+      "enqueuedAt": 1778145075651,
+      "path": "project_overview/project_details/context.md"
+    },
+    {
+      "enqueuedAt": 1778145626792,
+      "path": "project_overview/phase_2_data_understanding/phase_2_data_understanding.md"
+    },
+    {
+      "enqueuedAt": 1778145626792,
+      "path": "project_overview/swin_transformer_classification/project_overview.md"
+    }
+  ],
+  "totalDreams": 0,
+  "version": 1
+}

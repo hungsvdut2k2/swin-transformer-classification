@@ -1,0 +1,45 @@
+{
+  "active_context": [
+    {
+      "importance": 50,
+      "path": "project_overview/context.md",
+      "tokens": 39,
+      "type": "context"
+    },
+    {
+      "importance": 50,
+      "path": "project_overview/phase_2_data_understanding/phase_2_data_understanding.md",
+      "tokens": 325,
+      "type": "context"
+    },
+    {
+      "importance": 50,
+      "path": "project_overview/project_details/context.md",
+      "tokens": 28,
+      "type": "context"
+    },
+    {
+      "abstractPath": "project_overview/project_details/project_details.abstract.md",
+      "abstractTokens": 37,
+      "importance": 50,
+      "path": "project_overview/project_details/project_details.md",
+      "tokens": 37,
+      "type": "context"
+    },
+    {
+      "importance": 50,
+      "path": "project_overview/swin_transformer_classification/project_overview.md",
+      "tokens": 245,
+      "type": "context"
+    }
+  ],
+  "generated_at": "2026-05-07T09:20:26.796Z",
+  "lane_tokens": {
+    "contexts": 674,
+    "stubs": 0,
+    "summaries": 0
+  },
+  "source_fingerprint": "5a5bef65fafa3b7d8aa6bd5b588adea96b31e5d974a7f4740ae32e3f9845195e",
+  "total_tokens": 674,
+  "version": 1
+}

@@ -1,0 +1,6 @@
+- The project is centered on implementing image classification using the Swin Transformer architecture.
+- Documentation is centralized within the docs/ directory.
+- Context management and project metadata are handled via a dedicated .brv/ directory.
+- The project scope is strictly defined as an image classification task.
+- Structure: The document outlines the project's organizational layout and core technical focus.
+- Entities: Swin Transformer (Architecture), docs/ (Documentation), .brv/ (Context Management).

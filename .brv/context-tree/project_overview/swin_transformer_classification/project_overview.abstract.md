@@ -1,0 +1,1 @@
+This project implements image classification using the Swin Transformer architecture with structured documentation and context management.

@@ -1,0 +1,7 @@
+- Phase 2 focuses on data understanding for the Food-101 dataset in the context of Swin Transformer training.
+- Implementation is consolidated into a single Jupyter notebook (notebooks/phase2_data_understanding.ipynb).
+- The workflow follows a 13-task sequence: setup, acquisition, distribution, dimensions, stats, sampling, audit, splits, and summary.
+- Quality control includes automated audits for corrupt files, tiny images, and near-duplicates using pHash.
+- Key constants defined: SEED=42, VAL_FRACTION=0.10, PIXEL_STATS_SAMPLE=2000, TINY_SHORT_SIDE=256.
+- Artifacts are stored in artifacts/phase2/, including eda_stats.json, bad_files.json, and phash_cache.parquet.
+- Decision: Adopts a TDD-like approach for notebooks by utilizing assertion cells.
